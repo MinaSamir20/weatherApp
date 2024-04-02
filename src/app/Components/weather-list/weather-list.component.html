@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Weather List</h2>
+  <div class="row">
+    <div class="col-sm-6 mb-3">
+      <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search.." (keyup)="filterWeather()" />
+    </div>
+    <div class="col-sm-6 mb-3">
+      <button class="btn btn-primary btn-block" (click)="filterWeather()">
+        Filter
+      </button>
+    </div>
+  </div>
+
+  <button class="btn btn-primary mx-2 my-3" (click)="SortWeather('city')">Sort By City</button>
+  <ul class="list-group">
+    @for(city of filterWeatherList; track city.id){
+    <button
+      class="list-group-item btn btn-block btn-success"
+      (click)="getWeatherDetails(city.temp)"
+    >
+      {{ city.city }} : {{ city.temp }}
+    </button>
+
+    }
+  </ul>
+</div>
